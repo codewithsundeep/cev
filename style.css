@@ -4,6 +4,7 @@
     box-sizing: border-box;
     color: #fff;
     font-weight: bold;
+    overflow: auto;
 }
 
 body {
@@ -153,6 +154,5 @@ h1 {
     table th,
     td {
         word-wrap: break-word;
-        word-break: break-all;
     }
 }
