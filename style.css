@@ -148,11 +148,12 @@ h1 {
     }
     table {
         width: 100%;
-        margin: 0;
+        margin: 5px;
         min-width: none;
     }
     table th,
     td {
+        text-align: center;
         word-wrap: break-word;
     }
 }
