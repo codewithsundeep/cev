@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files Viewer</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="./assets/favicon/android-chrome-192x192.png" />
+    <link rel="apple-touch-icon" href="./assets/favicon/android-chrome-512x512.png" />
+</head>
+
+<body>
+    <h1>Excel and CSV Files Viewer</h1>
+    <a href="#table0" id="dummy" hidden></a>
+    <div class="tabs">
+        <a href="#csv-viewer" class="csv">CSV</a>
+        <a href="#excel-viewer" class="excel">Excel</a>
+    </div>
+    <div class="fileReader">
+        <div class="csv-viewer" id="csv-viewer">
+            <p>Drag and Drop CSV files</p>
+            <p>or</p>
+            <p>Click Here to Upload</p>
+            <input type="file" id="csv" hidden multiple>
+        </div>
+        <div class="excel-viewer" id="excel-viewer">
+            <p>Drag and Drop Excel files</p>
+            <p>or</p>
+            <p>Click Here to Upload</p>
+            <input type="file" id="excel" hidden>
+        </div>
+    </div>
+    <div class="fileViewer"></div>
+    <div class="paginate"></div>
+    <script src="./js/csv.js"></script>
+    <script src="./js/excel.js"></script>
+    <script src="./js/choosefile.js"></script>
+    <script src="./js/pagination.js"></script>
+    <script>
+        let csvlink = document.querySelector(".csv");
+        let excellink = document.querySelector(".excel");
+        [csvlink, excellink].forEach(elm => {
+            elm.addEventListener('click', () => {
+                document.querySelector(".fileViewer").innerHTML = ``;
+                document.querySelector(".paginate").innerHTML = ``;
+            })
+        });
+        onload = e => {
+            document.querySelector(".csv").click();
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("./sw.js").then(e => {
+                    console.log("service worker registered");
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>

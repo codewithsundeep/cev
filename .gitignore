@@ -1,0 +1,4 @@
+# ignore test excel files
+assets/excel
+# ignore test csv
+assets/csv
