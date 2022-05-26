@@ -4,7 +4,7 @@ const fileViewer = document.querySelector(".fileViewer");
 function readCsv(files) {
     for (let i = 0; i < files.length; i++) {
         let fileReader = new FileReader();
-        fileReader.onloadend = () => {
+        fileReader.onload = () => {
             let result = fileReader.result;
             let parse = result.split(/\r?\n|\r/)
                 .reduce((previous, current, index) => {

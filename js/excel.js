@@ -2,7 +2,7 @@
 
 function readExcel(files) {
     let fr = new FileReader();
-    fr.onloadend = () => {
+    fr.onload = () => {
         let xls = XLSX.read(fr.result)
         pagination(xls.SheetNames)
         let html = [];
